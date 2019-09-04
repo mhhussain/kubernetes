@@ -3,46 +3,58 @@
 ## Install nano
 
 Because text-editor.
+
 `yum install nano`
 
 ## Turn off swap
 
 Turn it off
+
 `swapoff -a`
 
 Verify it turned off (show return nothing)
+
 `swapon --show`
 
 Delete any lines in `/etc/fstab` that reference swap.
+
 `nano /etc/fstab`
 
 ## Disable firewalld
 
 `systemctl stop firewalld`
+
 `systemctl disable firewalld`
 
 Verify that firewalld is disabled
+
 `systemctl status firewalld`
 
 ## Install Docker
 
 Update
+
 `yum check-update`
 
 Install Docker (for CentOs...)
+
 `curl -fsSL https://get.docker.com/ | sh`
 
 Start Docker
+
 `systemctl start docker`
 
 Verify Docker started
+
 `systemctl status docker`
 
 Enable Docker at reboot
+
 `systemctl enable docker`
 
 
 ## Install and run kubeadm
+
 ```
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -62,7 +74,6 @@ yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 systemctl enable --now kubelet
 ```
-
 
 ## Fin
 
