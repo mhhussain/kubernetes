@@ -30,9 +30,11 @@ Run `export KUBECONFIG=/etc/kubernetes/admin.conf` in the console to set kubectl
 At this point `kubectl get nodes` should show our master as *Not Ready*. Need to setup CNI.
 
 Set net to bridge IPv4 traffic to iptable chains (because [reasons](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#network-plugin-requirements)).
+
 `sysctl net.bridge.bridge-nf-call-iptables=1`
 
 Install flannel addon
+
 `kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/62e44c867a2846fefb68bd5f178daf4da3095ccb/Documentation/kube-flannel.yml`
 
 ## Untaint master (optional?)
