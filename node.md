@@ -1,8 +1,17 @@
 # Setting up a node with kubeadm
 
+## Install nano
+
+Because text-editor.
+`yum install nano`
+
 ## Turn off swap
 
+Turn it off
 `swapoff -a`
+
+Verify it turned off (show return nothing)
+`swapon --show`
 
 Delete any lines in `/etc/fstab` that reference swap.
 `nano /etc/fstab`
@@ -14,11 +23,6 @@ Delete any lines in `/etc/fstab` that reference swap.
 
 Verify that firewalld is disabled
 `systemctl status firewalld`
-
-## Install nano
-
-Because text-editor.
-`yum install nano`
 
 ## Install Docker
 
