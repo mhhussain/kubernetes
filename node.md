@@ -42,7 +42,7 @@ Enable Docker at reboot
 `systemctl enable docker`
 
 
-## Run kubeadm
+## Install and run kubeadm
 ```
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -62,3 +62,8 @@ yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 systemctl enable --now kubelet
 ```
+
+
+## Fin
+
+This node is now setup with kubelet and kube-proxy. It is awaiting additional commands from kubeadm (either 'init' to create a cluster or 'join' to join an existing cluster).
