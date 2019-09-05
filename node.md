@@ -104,6 +104,54 @@ Restart samba service
 
 You can now connect to the samba share via IP address and share name. Use the credentials created above for access.
 
+## Installing Java - CentOS (optional)
+
+Update
+
+`yum update`
+
+Install java
+
+```
+sudo yum install java-1.8.0-openjdk.x86_64
+sudo cp /etc/profile /etc/profile_backup
+echo 'export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk' | sudo tee -a /etc/profile 
+echo 'export JRE_HOME=/usr/lib/jvm/jre' | sudo tee -a /etc/profile source /etc/profile
+```
+
+## Installing Helm
+
+Install helm
+
+`curl -L https://git.io/get_helm.sh | bash`
+
+Helm CLI uses kube config file at `~/.kube/config`
+
+## Installing Java - Raspian - _incomplete_ (optional)
+
+Need to install binary from here: https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html
+and get it onto the server somehow. I used a samba share... ugh.
+
+Unzip tar
+
+`tar -xvf jdk-12.0.2_linux-x64_bin.tar.gz`
+
+Create a directory for the jvm at `/usr/lib/jvm`
+
+`sudo mkdir -p /usr/lib/jvm`
+
+Move java directory there
+
+`sudo mv ./jdk-12.0.2 /usr/lib/jvm`
+
+Then run
+
+```
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk-12.0.2/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk-12.0.2/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/lib/jvm/jdk-12.0.2/bin/javaws" 1
+```
+
 ## Fin
 
 This node is now setup with kubelet and kube-proxy. It is awaiting additional commands from kubeadm (either 'init' to create a cluster or 'join' to join an existing cluster).
