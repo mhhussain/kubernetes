@@ -10,9 +10,38 @@ Run
 
 ## Installing Helm
 
-_for templating_
+Create a service account for tiller using the following yaml
+
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+```
+Note, that tiller does require cluster-admin.
+
+Run helm init
+
+`helm init --service-account tiller --history-max 200`
 
 ## Installing Ambassador
 
 _for ingress_
 
+## Installing Jenkins
+
+_for continuous building_
