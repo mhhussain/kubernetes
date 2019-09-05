@@ -75,6 +75,35 @@ yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 systemctl enable --now kubelet
 ```
 
+## Setup samba (optional)
+
+Install samba service
+
+`sudo apt install samba`
+
+Create user for a share
+
+`smbpasswd -a <username>`
+
+Update `/etc/samba/smb.conf` file with share details
+
+```
+[<share folder name>]
+  path = <share path on node>
+  available = yes
+  valid uesrs = <username>
+  read only = no
+  browsable = yes
+  public = yes
+  writable = yes
+```
+
+Restart samba service
+
+`sudo service smbd restart`
+
+You can now connect to the samba share via IP address and share name. Use the credentials created above for access.
+
 ## Fin
 
 This node is now setup with kubelet and kube-proxy. It is awaiting additional commands from kubeadm (either 'init' to create a cluster or 'join' to join an existing cluster).
