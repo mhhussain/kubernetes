@@ -40,7 +40,27 @@ Run helm init
 
 ## Installing Ambassador
 
-_for ingress_
+Install Ambassador and create rbac:
+
+`kubectl apply -f https://getambassador.io/yaml/ambassador/ambassador-rbac.yaml`
+
+Create Ambassador service
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: ambassador
+spec:
+  type: NodePort
+  externalTrafficPolicy: Local
+  ports:
+  - port: 80
+    targetPort: 8080
+    nodePort: 31000
+  selector:
+    service: ambassador
+```
 
 ## Installing Jenkins
 

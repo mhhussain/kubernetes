@@ -110,6 +110,10 @@ Update
 
 `yum update`
 
+Install wget (not sure why this isn't already on image)
+
+`yum install wget`
+
 Install java
 
 ```
@@ -117,6 +121,16 @@ sudo yum install java-1.8.0-openjdk.x86_64
 sudo cp /etc/profile /etc/profile_backup
 echo 'export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk' | sudo tee -a /etc/profile 
 echo 'export JRE_HOME=/usr/lib/jvm/jre' | sudo tee -a /etc/profile source /etc/profile
+```
+
+## Installing Jankins (optional)
+
+Run this command (once java is installed)
+
+```
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo yum install -y jenkins
 ```
 
 ## Installing Helm
