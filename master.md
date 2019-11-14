@@ -44,4 +44,4 @@ _On the master node_
 By default, the master node is tainted to prevent pod scheduling. This is to ensure that only the control plane runs on the master. If you want to run pods on your master you will need to untaint the master.
 
 Untaint nodes
-`kubectl taint nodes --all node-role.kubernetes.io/master-
+`kubectl taint nodes --all node-role.kubernetes.io/master-`
