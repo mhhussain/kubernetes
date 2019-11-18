@@ -1,3 +1,5 @@
+Node OS is centos7 minimal iso
+
 # Setting up a node with kubeadm
 
 ## Install nano
@@ -165,6 +167,22 @@ sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk-12.0
 sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk-12.0.2/bin/javac" 1
 sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/lib/jvm/jdk-12.0.2/bin/javaws" 1
 ```
+
+## Install Cinnamon (UI - optional)
+
+Update
+
+`sudo yum install epel-release -y`
+
+Install server group dependencies
+
+`sudo yum groupinstall "Server with GUI" -y`
+
+Install Cinnamon
+
+`sudo yum install cinnamon -y`
+
+Restart.
 
 ## Fin
 
